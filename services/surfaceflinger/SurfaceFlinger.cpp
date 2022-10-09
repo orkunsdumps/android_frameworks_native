@@ -2747,7 +2747,7 @@ bool SurfaceFlinger::commit(nsecs_t frameTime, int64_t vsyncId, nsecs_t expected
     // When Backpressure propagation is enabled we want to give a small grace period
     // for the present fence to fire instead of just giving up on this frame to handle cases
     // where present fence is just about to get signaled.
-    const int graceTimeForPresentFenceMs =
+    const int graceTimeForPresentFenceMs = mPropagateBackpressure &&
             (mPropagateBackpressure &&
              (mPropagateBackpressureClientComposition || !mHadClientComposition))
             ? 1
